@@ -687,7 +687,10 @@ PrefabInstance:
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 473064179651476955, guid: 0eedd7af3fbc4874cb6e0c31bcda0215, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 1496681332}
+      addedObject: {fileID: 1496681339}
+    - targetCorrespondingSourceObject: {fileID: 473064179651476955, guid: 0eedd7af3fbc4874cb6e0c31bcda0215, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1496681338}
   m_SourcePrefab: {fileID: 100100000, guid: 0eedd7af3fbc4874cb6e0c31bcda0215, type: 3}
 --- !u!4 &474917854 stripped
 Transform:
@@ -1855,7 +1858,7 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 473064179651476955, guid: 0eedd7af3fbc4874cb6e0c31bcda0215, type: 3}
   m_PrefabInstance: {fileID: 474917853}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1496681332
+--- !u!114 &1496681338
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1864,13 +1867,42 @@ MonoBehaviour:
   m_GameObject: {fileID: 1496681331}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 22c4a4bf44a81504080d6ead9c65e840, type: 3}
+  m_Script: {fileID: 11500000, guid: 62899f850307741f2a39c98a8b639597, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Speed: 1
-  JumpForce: 50
-  _rSpeed: 0.5
-  _mSpeed: 5
+  m_Actions: {fileID: -944628639613478452, guid: 48b9232107d385a4ca30b7c14054bf88, type: 3}
+  m_NotificationBehavior: 0
+  m_UIInputModule: {fileID: 0}
+  m_DeviceLostEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_DeviceRegainedEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_ControlsChangedEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_ActionEvents: []
+  m_NeverAutoSwitchControlSchemes: 0
+  m_DefaultControlScheme: 
+  m_DefaultActionMap: Player
+  m_SplitScreenIndex: -1
+  m_Camera: {fileID: 0}
+--- !u!114 &1496681339
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1496681331}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 084ed8caa3bf0f34a8e4e1e39cc2b2c3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  turnSpeed: 60
+  speed: 1
+  animator: {fileID: 0}
 --- !u!1 &1594991317
 GameObject:
   m_ObjectHideFlags: 0
@@ -2155,7 +2187,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &1658192317
 MonoBehaviour:
   m_ObjectHideFlags: 0
