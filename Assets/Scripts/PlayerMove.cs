@@ -12,32 +12,38 @@ public class PlayerMove : MonoBehaviour
     private Vector3 moveDirection;
     private Quaternion rotation = Quaternion.identity;
     Rigidbody rb;
-
-    [SerializeField] private Animator animator;
-    private bool isRunning = false;
+    [SerializeField] PlayerManager playerManager;
+    //float hInput = 0;
+    //float vInput = 0;
 
     private void Start()
     {
         rb = GetComponent<Rigidbody>();
     }
 
-    private void OnMove(InputValue value)
+    private void Update()
     {
-        var axis = value.Get<Vector2>();
-        _velocity = new Vector3(axis.x, 0, axis.y);
-        if (_velocity.x == 0 && _velocity.z == 0)
+        var hInput = Input.GetAxis("Horizontal");
+        var vInput = Input.GetAxis("Vertical");
+        if (playerManager.hitDamage)
         {
-            isRunning = false;
+            hInput = 0;
+            vInput = 0;
         }
         else
         {
-            isRunning = true;
+            if (_velocity == Vector3.zero)
+            {
+                playerManager._anim = PlayerManager.Anim.stop;
+            }
+            else
+            {
+                playerManager._anim = PlayerManager.Anim.run;
+            }
+            playerManager.OnMoveAnim();
         }
-        animator.SetBool("Running", isRunning);
-    }
+        _velocity = new Vector3(hInput, 0, vInput);
 
-    private void Update()
-    {
         moveDirection = new Vector3(_velocity.x, 0, _velocity.z);
         moveDirection.Normalize();
         var desiredForward = Vector3.RotateTowards(transform.forward, moveDirection, turnSpeed * Time.deltaTime, 0.0f);

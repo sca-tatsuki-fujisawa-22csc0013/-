@@ -137,7 +137,7 @@ GameObject:
   - component: {fileID: 567390627}
   m_Layer: 3
   m_Name: Cube (2)
-  m_TagString: Ground
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -242,7 +242,7 @@ GameObject:
   - component: {fileID: 599479571}
   m_Layer: 0
   m_Name: Cube (3)
-  m_TagString: Ground
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -471,7 +471,7 @@ GameObject:
   - component: {fileID: 751555454}
   m_Layer: 0
   m_Name: Cube
-  m_TagString: Ground
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -685,10 +685,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 58a6510b2be7fec498e09366ffbb11b7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _anim: 0
+  hitDamage: 0
   haveBall: 0
   _hitNpc: {fileID: 1167289860}
   ballSituation: {fileID: 2042197649}
   _ball: {fileID: 2042197643}
+  animator: {fileID: 1241770233}
+  VoiceDamage: {fileID: 8300000, guid: 3cdf2c0b0d9a3b44f92ff0dafde04acf, type: 3}
+  VoiceDown: {fileID: 8300000, guid: 4435cccda87a1154b8821eb9e8883ed9, type: 3}
+  VoiceSalute: {fileID: 8300000, guid: a0f5e5195536d744aa88172c811b1f93, type: 3}
 --- !u!114 &815668115
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -701,6 +707,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8bb65dcb7e6561049bc1c862e2e1fd6a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  animator: {fileID: 1241770233}
+  pPos: {fileID: 1126190171}
+  npcManager: {fileID: 815668114}
 --- !u!4 &815668120 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1033252839478010626, guid: 6344585e8a1c272438fc0eddc7c08a80, type: 3}
@@ -720,7 +729,7 @@ GameObject:
   - component: {fileID: 924340765}
   m_Layer: 0
   m_Name: Cube (1)
-  m_TagString: Ground
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -908,7 +917,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1126190163}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 62899f850307741f2a39c98a8b639597, type: 3}
   m_Name: 
@@ -943,9 +952,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 084ed8caa3bf0f34a8e4e1e39cc2b2c3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  turnSpeed: 180
+  turnSpeed: 90
   speed: 5
-  animator: {fileID: 1437200907}
+  playerManager: {fileID: 1126190166}
 --- !u!114 &1126190166
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -958,10 +967,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3961878201e01bd42af1ee766ad5199d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _anim: 0
   haveBall: 0
+  hitDamage: 0
   _hitObj: {fileID: 1897553658}
   ballSituation: {fileID: 2042197649}
   _ball: {fileID: 2042197643}
+  animator: {fileID: 1437200907}
+  VoiceDamage: {fileID: 8300000, guid: 3b7a7ee7210c91b40bd5191e477f3f39, type: 3}
+  VoiceDown: {fileID: 8300000, guid: 22ee7bfdd9f0fc04ca473a210c8f54fd, type: 3}
+  VoiceSalute: {fileID: 8300000, guid: a40e7a9bd198e584e8efff18da4b3a65, type: 3}
 --- !u!4 &1126190171 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1033252839478010626, guid: 0eedd7af3fbc4874cb6e0c31bcda0215, type: 3}
@@ -1102,6 +1117,11 @@ Transform:
   m_Children: []
   m_Father: {fileID: 815668120}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!95 &1241770233 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 1972970751048856837, guid: 6344585e8a1c272438fc0eddc7c08a80, type: 3}
+  m_PrefabInstance: {fileID: 1545405869}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1428230195
 GameObject:
   m_ObjectHideFlags: 0
