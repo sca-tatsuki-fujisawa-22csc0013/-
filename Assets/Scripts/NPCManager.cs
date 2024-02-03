@@ -16,7 +16,7 @@ public class NPCManager : MonoBehaviour
     public bool haveBall = false;
     Vector3 offset = new Vector3(0, 0.6f, 0);
     [SerializeField] HitNPC _hitNpc;
-    [SerializeField] BallSituation ballSituation;
+    [SerializeField] public BallSituation ballSituation;
     [SerializeField] GameObject _ball;
     Rigidbody _rb;
     SphereCollider _ballCol;
@@ -34,7 +34,8 @@ public class NPCManager : MonoBehaviour
         audioSource = GetComponent<AudioSource>();
         _rb = _ball.GetComponent<Rigidbody>();
         _ballCol = _ball.GetComponent<SphereCollider>();
-        _anim = Anim.stop;
+        _anim = Anim.run;
+        OnMoveAnim();
     }
 
     public void OnMoveAnim()
@@ -60,47 +61,26 @@ public class NPCManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //if (_hitNpc.hit == true && haveBall == false)
-        //{
-        //    if (Input.GetKeyDown(KeyCode.Space))
-        //    {
-        //        キャッチ時の判定
-        //        ballSituation.eBall = true;
-        //        ballSituation.valid = false;
-        //        haveBall = true;
-        //        _ball.transform.position = transform.position + offset + transform.forward * 0.3f;
-        //        _rb.isKinematic = true;
-        //        _ball.transform.parent = this.transform;
-        //        _ballCol.isTrigger = true;
-        //        Invoke("slow", 0.3f);
-        //    }
-        //}
-        //else if (haveBall)
-        //{
-        //    if (Input.GetKeyDown(KeyCode.Space))
-        //    {
-        //        haveBall = false;
-        //        ballSituation.ParentNull();
-        //        _rb.isKinematic = false;
-        //        _ballCol.isTrigger = false;
-        //        ballSituation.BallMove(transform.forward);
-        //    }
-        //}
-
-        switch (haveBall)
+        if (!haveBall && ballSituation.pBall == false && _ball.transform.position.z >= 0)
         {
-            case true:
-                //slow();
-                break;
-            case false:
-                Catch();
-                break;
+            transform.LookAt(_ball.transform);
+            transform.position += transform.forward * Time.deltaTime * 5.0f;
+            //(_ball.transform.position - transform.position) * Time.deltaTime * 5.0f;
+        }
+        else if (!haveBall && ballSituation.pBall == true)
+        {
+            transform.LookAt(_ball.transform);
+            transform.position += transform.forward * Time.deltaTime * 5.0f;
         }
     }
 
-    void Catch()
+    public void Catch()
     {
         int rand = Random.Range(0,2);
+        if (!haveBall && ballSituation.pBall == false)
+        {
+            rand = 1;
+        }
         switch (rand)
         {
             case 0:
@@ -110,8 +90,6 @@ public class NPCManager : MonoBehaviour
         }
         if (_hitNpc.hit == true && haveBall == false)
         {
-            //if (Input.GetKeyDown(KeyCode.Space))
-            //{
             //キャッチ時の判定
             ballSituation.eBall = true;
             ballSituation.valid = false;
@@ -120,8 +98,8 @@ public class NPCManager : MonoBehaviour
             _rb.isKinematic = true;
             _ball.transform.parent = this.transform;
             _ballCol.isTrigger = true;
+            transform.position = new Vector3(transform.position.x, transform.position.y + 0.5f, transform.position.z);
             //Invoke("slow", 0.5f);
-            //}
         }
     }
 

@@ -685,7 +685,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 58a6510b2be7fec498e09366ffbb11b7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _anim: 0
+  _anim: 1
   hitDamage: 0
   haveBall: 0
   _hitNpc: {fileID: 1167289860}
@@ -994,7 +994,6 @@ GameObject:
   - component: {fileID: 1167289864}
   - component: {fileID: 1167289863}
   - component: {fileID: 1167289862}
-  - component: {fileID: 1167289861}
   - component: {fileID: 1167289860}
   m_Layer: 0
   m_Name: 'HitObj '
@@ -1016,20 +1015,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _nManager: {fileID: 815668114}
-  hit: 0
---- !u!114 &1167289861
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1167289859}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0b8d9bbc84d073749b3742137c70dc54, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _pManager: {fileID: 1126190166}
   hit: 0
 --- !u!65 &1167289862
 BoxCollider:

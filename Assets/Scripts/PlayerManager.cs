@@ -92,6 +92,10 @@ public class PlayerManager : MonoBehaviour
         {
             SceneManager.LoadScene("MainScene");
         }
+        if (Input.GetKeyDown(KeyCode.A))
+        {
+            SceneManager.LoadScene("TitleScene");
+        }
     }
 
     private void OnCollisionEnter(Collision collision)

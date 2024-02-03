@@ -76,7 +76,7 @@ public class AnimSample : MonoBehaviour
     public void SaluteAnim()
     {
         animator.SetTrigger("Salute");
-        audioSource.PlayOneShot(VoiceSalute);
+        //audioSource.PlayOneShot(VoiceSalute);
     }
     
     //  待機
