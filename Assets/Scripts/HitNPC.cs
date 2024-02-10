@@ -11,7 +11,7 @@ public class HitNPC : MonoBehaviour
     {
         if (other.gameObject.tag == "Ball" && _nManager.haveBall != true)
         {
-            Debug.Log("HIT");
+            hit = true;
             _nManager.Catch();
         }
     }

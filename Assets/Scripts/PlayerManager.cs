@@ -31,6 +31,9 @@ public class PlayerManager : MonoBehaviour
     [SerializeField] private AudioClip VoiceSalute;     //  èüóòâπê∫
     private AudioSource audioSource;
 
+    public int pLife = 3;
+    [SerializeField] LifeManager _lifeManager;
+
     void Start()
     {
         audioSource = GetComponent<AudioSource>();
@@ -57,6 +60,8 @@ public class PlayerManager : MonoBehaviour
     {
         animator.SetTrigger("Damage");
         audioSource.PlayOneShot(VoiceDamage);
+        pLife--;
+        _lifeManager.LifeDown(pLife);
     }
 
     // Update is called once per frame
@@ -86,15 +91,6 @@ public class PlayerManager : MonoBehaviour
                 _ballCol.isTrigger = false;
                 ballSituation.BallMove(transform.forward);
             }
-        }
-
-        if (Input.GetKeyDown(KeyCode.Return))
-        {
-            SceneManager.LoadScene("MainScene");
-        }
-        if (Input.GetKeyDown(KeyCode.A))
-        {
-            SceneManager.LoadScene("TitleScene");
         }
     }
 

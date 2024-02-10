@@ -14,6 +14,7 @@ public class NPCMove : MonoBehaviour
     [SerializeField] private Animator animator;
     private bool isRunning = false;
     [SerializeField] Transform pPos;
+    [SerializeField] Transform ballPos;
     [SerializeField] NPCManager npcManager;
     bool hitWall = false;
 
@@ -29,38 +30,37 @@ public class NPCMove : MonoBehaviour
         if (npcManager.haveBall == true)
         {
             transform.LookAt(pPos);
-            _velocity = (pPos.position - transform.position).normalized;
-            if (transform.position.z <= 0)
+            transform.position += transform.forward * Time.deltaTime * 5.0f;
+            if (transform.position.z <= 0.5f)
             {
                 npcManager.Invoke("slow", 0.5f);
             }
         }
-        //else if (npcManager.haveBall == false && npcManager.ballSituation.pBall == true)
-        //{
-        //    _velocity = (transform.position - pPos.position).normalized;
-        //    if (hitWall)
-        //    {
-        //        if(pPos.position.x < transform.position.x)
-        //        {
-        //            _velocity.x = 1.0f;
-        //        }
-        //        else if(pPos.position.x > transform.position.x)
-        //        {
-        //            _velocity.x = -1.0f;
-        //        }
-        //    }
-        //}
 
-        //moveDirection = new Vector3(_velocity.x, 0, _velocity.z);
-        //moveDirection.Normalize();
-        //var desiredForward = Vector3.RotateTowards(transform.forward, moveDirection, turnSpeed * Time.deltaTime, 0.0f);
-        //rotation = Quaternion.LookRotation(desiredForward);
-        //rb.MoveRotation(rotation);
-        //transform.position += _velocity * speed * Time.deltaTime;
-        if (transform.position.z <= 0)
+        if (transform.position.z < 0)
         {
             transform.position = new Vector3(transform.position.x, transform.position.y, 0);
         }
+
+        if (transform.position.z < -1)
+        {
+            transform.position = new Vector3(transform.position.x, 0.3f, transform.position.z);
+        }
+    }
+
+    public void NotHaveBall(bool pBall)
+    {
+        switch (pBall)
+        {
+            case false:
+                transform.LookAt(ballPos.transform);
+                break;
+            case true:
+                transform.LookAt(pPos.transform);
+                transform.Rotate(new Vector3(0, transform.rotation.y - 180.0f, 0));
+                break;
+        }
+        transform.position += transform.forward * Time.deltaTime * 5.0f;
     }
 
     private void OnCollisionStay(Collision collision)

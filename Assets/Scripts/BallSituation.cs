@@ -18,10 +18,12 @@ public class BallSituation : MonoBehaviour
         _rb = GetComponent<Rigidbody>();
     }
 
-    // Update is called once per frame
-    void Update()
+    private void Update()
     {
-        
+        if(transform.position.y < 0)
+        {
+            transform.position = new Vector3(0,3.0f,0);
+        }
     }
 
     public void BallMove(Vector3 forward)
@@ -36,7 +38,7 @@ public class BallSituation : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.tag == "Ground")
+        if (collision.gameObject.tag == "Ground" || collision.gameObject.tag == "Wall")
         {
             valid = false;
             pBall = false;

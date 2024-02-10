@@ -15,6 +15,7 @@ public class changeColor : MonoBehaviour
 
     Text text;
     float[] rgb = new float[3];
+    [SerializeField] float ChangeSpeed;
     // Start is called before the first frame update
     void Start()
     {
@@ -47,7 +48,7 @@ public class changeColor : MonoBehaviour
     {
         if(rgb[(int)toColor] < 1.0f)
         {
-            rgb[(int)toColor] += Time.deltaTime;
+            rgb[(int)toColor] += Time.deltaTime * ChangeSpeed;
             if(rgb[(int)toColor] >= 1.0f)
             {
                 rgb[(int)toColor] = 1.0f;
@@ -55,7 +56,7 @@ public class changeColor : MonoBehaviour
         }
         else
         {
-            rgb[(int)nowColor] -= Time.deltaTime;
+            rgb[(int)nowColor] -= Time.deltaTime * ChangeSpeed;
             if (rgb[(int)nowColor] <= 0.0f)
             {
                 rgb[(int)nowColor] = 0.0f;
